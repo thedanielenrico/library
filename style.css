@@ -1,0 +1,16 @@
+#card-section {
+  width: 80%;
+  height: fit-content;
+  margin: auto;
+  background-color: aliceblue;
+  display: flex;
+  gap: 12px;
+  padding: 18px;
+}
+
+.card {
+  width: 148px;
+  height: 178px;
+  border: solid grey 1px;
+  border-radius: 4px;
+}
