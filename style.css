@@ -1,5 +1,14 @@
-#card-section {
+main {
   width: 80%;
+  margin: auto;
+  padding: 48px 0;
+}
+
+#add-new-book {
+  margin-bottom: 12px;
+}
+
+#card-section {
   height: fit-content;
   margin: auto;
   background-color: aliceblue;
