@@ -20,7 +20,7 @@ Book.prototype.info = function () {
   console.log(
     `${this.title} by ${this.author}, ${this.pages} pages, ${
       this.read ? "has been read" : "not read yet"
-    }.`
+    }.`,
   );
 };
 
@@ -40,5 +40,10 @@ function createCardElement(book) {
   cardElement.append(header, author, pages);
   cardSection.appendChild(cardElement);
 }
+
+const hanldeAddNewBookClick = () => {
+  console.log("~~~~~~~~CLICK");
+  addBookToLibrary("hello world", "me", 98);
+};
 
 addBookToLibrary("hello world", "me", 98);
