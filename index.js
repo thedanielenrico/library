@@ -52,9 +52,12 @@ openAddnNewBookModal.addEventListener("click", () => {
 newBookDialog.addEventListener("close", () => {
   if (newBookDialog.returnValue === "confirm") {
     const form = new FormData(newBookForm);
-    for (const key of form.keys()) {
-      console.log("~~~~~~~key", key);
-    }
+    const title = form.get("title");
+    const author = form.get("author");
+    const numPages = form.get("numPages");
+    const read = form.get("read");
+    addBookToLibrary(title, author, numPages, Boolean(read));
+    newBookForm.reset();
   }
 });
 
