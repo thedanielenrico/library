@@ -1,4 +1,8 @@
 const cardSection = document.getElementById("card-section");
+const openAddnNewBookModal = document.getElementById("open-add-new-book-modal");
+const newBookDialog = document.getElementById("new-book-dialog");
+const newBookForm = document.getElementById("new-book-form");
+const confirmAddBook = document.getElementById("confirm-add-book");
 
 const myLibrary = [];
 
@@ -41,9 +45,17 @@ function createCardElement(book) {
   cardSection.appendChild(cardElement);
 }
 
-const hanldeAddNewBookClick = () => {
-  console.log("~~~~~~~~CLICK");
-  addBookToLibrary("hello world", "me", 98);
-};
+openAddnNewBookModal.addEventListener("click", () => {
+  newBookDialog.showModal();
+});
+
+newBookDialog.addEventListener("close", () => {
+  if (newBookDialog.returnValue === "confirm") {
+    const form = new FormData(newBookForm);
+    for (const key of form.keys()) {
+      console.log("~~~~~~~key", key);
+    }
+  }
+});
 
 addBookToLibrary("hello world", "me", 98);

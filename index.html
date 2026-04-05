@@ -8,10 +8,52 @@
   </head>
   <body>
     <main>
+      <dialog id="new-book-dialog">
+        <p>This dialog was opened using an invoker command.</p>
+        <form id="new-book-form" method="dialog">
+          <div>
+            <label for="title">Title:</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="Enter a title..."
+              required
+            />
+          </div>
+          <div>
+            <label for="author">Author:</label>
+            <input
+              type="text"
+              id="author"
+              name="author"
+              placeholder="Enter an author..."
+              required
+            />
+          </div>
+          <div>
+            <label for="page">Number of Pages:</label>
+            <input
+              type="number"
+              min="1"
+              max="20000"
+              id="page"
+              name="page"
+              required
+            />
+          </div>
+          <div>
+            <label for="read">Read:</label>
+            <input type="checkbox" id="read" name="read" />
+          </div>
+          <div>
+            <button value="cancel" formnovalidate>Cancel</button>
+            <button id="confirm-add-book" value="confirm">Confirm</button>
+          </div>
+        </form>
+      </dialog>
       <section>
-        <button id="add-new-book" onclick="hanldeAddNewBookClick()">
-          Add New Book
-        </button>
+        <button id="open-add-new-book-modal">Add New Book</button>
       </section>
       <section id="card-section"></section>
     </main>
