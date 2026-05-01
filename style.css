@@ -1,17 +1,39 @@
-main {
-  width: 80%;
-  margin: auto;
-  padding: 48px 0;
+:root {
+  --primary-color: #3498db;
+  --main-radius: 8px;
+  --main-padding: 8px;
+  --main-border: solid grey 1px;
 }
 
-#add-new-book {
+body {
+  margin: 0;
+}
+
+main {
+  width: 80%;
+  margin: 12px auto;
+  padding: 48px;
+  background-color: aliceblue;
+  height: 100vh;
+  box-sizing: border-box;
+  border: var(--main-border);
+  border-radius: var(--main-radius);
+}
+
+#open-add-new-book-modal {
+  display: block;
   margin-bottom: 12px;
+  border: var(--main-border);
+  border-radius: var(--main-radius);
+  padding: var(--main-padding);
+}
+#open-add-new-book-modal:hover {
+  cursor: pointer;
 }
 
 #card-section {
   height: fit-content;
   margin: auto;
-  background-color: aliceblue;
   display: flex;
   gap: 12px;
   padding: 18px;
@@ -20,6 +42,19 @@ main {
 .card {
   width: 148px;
   height: 178px;
-  border: solid grey 1px;
-  border-radius: 4px;
+  border: var(--main-border);
+  border-radius: var(--main-radius);
+  padding: var(--main-padding);
+}
+
+#new-book-dialog {
+  border: var(--main-border);
+  border-radius: var(--main-radius);
+  div {
+    padding-bottom: var(--main-padding);
+  }
+  #title,
+  #author {
+    width: 100%;
+  }
 }
