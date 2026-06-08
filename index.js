@@ -4,7 +4,7 @@ const newBookDialog = document.getElementById("new-book-dialog");
 const newBookForm = document.getElementById("new-book-form");
 const confirmAddBook = document.getElementById("confirm-add-book");
 
-const myLibrary = [];
+// const myLibrary = [];
 
 function Book(title, author, pages, read) {
   this.id = crypto.randomUUID();
@@ -16,7 +16,7 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
-  myLibrary.push(book);
+  // myLibrary.push(book);
   createCardElement(book);
 }
 
@@ -28,20 +28,35 @@ Book.prototype.info = function () {
   );
 };
 
+function createCardSection(headerText, text) {
+  const cardSection = document.createElement("div");
+  cardSection.className = "card-info";
+  const header = document.createElement("h5");
+  const paragraph = document.createElement("p");
+
+  header.textContent = headerText;
+  paragraph.textContent = text;
+  cardSection.append(header, paragraph);
+
+  return cardSection;
+}
+
 function createCardElement(book) {
   const cardElement = document.createElement("div");
   cardElement.className = "card";
 
-  const header = document.createElement("h3");
-  header.textContent = `Title: ${book.title}`;
+  const title = document.createElement("h2");
+  title.textContent = `${book.title}`;
 
-  const author = document.createElement("p");
-  author.textContent = `By ${book.author}`;
+  const authorSection = createCardSection("Author", book.author);
+  const pagesSection = createCardSection("Pages", book.pages);
+  const statusSection = createCardSection(
+    "Status",
+    book.read ? "Read" : "Not read yet",
+  );
 
-  const pages = document.createElement("p");
-  pages.textContent = `Number of pages: ${book.pages}`;
+  cardElement.append(title, authorSection, pagesSection, statusSection);
 
-  cardElement.append(header, author, pages);
   cardSection.appendChild(cardElement);
 }
 
@@ -61,4 +76,4 @@ newBookDialog.addEventListener("close", () => {
   }
 });
 
-addBookToLibrary("hello world", "me", 98);
+addBookToLibrary("Children of Time", "Adrian Tchaikovsky", 600, true);

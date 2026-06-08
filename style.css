@@ -27,6 +27,7 @@ main {
   border-radius: var(--main-radius);
   padding: var(--main-padding);
 }
+
 #open-add-new-book-modal:hover {
   cursor: pointer;
 }
@@ -40,11 +41,23 @@ main {
 }
 
 .card {
-  width: 148px;
-  height: 178px;
+  width: 300px;
+  height: 360px;
   border: var(--main-border);
   border-radius: var(--main-radius);
   padding: var(--main-padding);
+}
+
+.card-info {
+  h5,
+  p {
+    margin: 0;
+  }
+  h5 {
+    margin-bottom: 5px;
+  }
+  border-bottom: 1px solid black;
+  padding: 8px 0;
 }
 
 #new-book-dialog {
