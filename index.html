@@ -12,7 +12,7 @@
         <p>Add a new book to your library.</p>
         <form id="new-book-form" method="dialog">
           <div>
-            <label for="title">Title:</label>
+            <label for="title">Title</label>
             <input
               type="text"
               id="title"
@@ -23,7 +23,7 @@
             />
           </div>
           <div>
-            <label for="author">Author:</label>
+            <label for="author">Author</label>
             <input
               type="text"
               id="author"
@@ -34,7 +34,7 @@
             />
           </div>
           <div>
-            <label for="numPages">Number of Pages:</label>
+            <label for="numPages">Number of Pages</label>
             <input
               type="number"
               min="1"
@@ -45,7 +45,7 @@
             />
           </div>
           <div>
-            <label for="read">Read:</label>
+            <label for="read">Has this book been read?</label>
             <input type="checkbox" id="read" name="read" />
           </div>
           <div>
@@ -54,7 +54,12 @@
           </div>
         </form>
       </dialog>
-      <section>
+      <section id="header-section">
+        <hgroup>
+          <h1>My Library</h1>
+          <hr />
+          <p>A place to track books</p>
+        </hgroup>
         <button id="open-add-new-book-modal">Add New Book</button>
       </section>
       <section id="card-section"></section>

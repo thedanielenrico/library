@@ -12,7 +12,7 @@ body {
 main {
   width: 80%;
   margin: 12px auto;
-  padding: 48px;
+  padding: 16px 48px;
   background-color: aliceblue;
   height: 100vh;
   box-sizing: border-box;
@@ -20,16 +20,26 @@ main {
   border-radius: var(--main-radius);
 }
 
-#open-add-new-book-modal {
-  display: block;
-  margin-bottom: 12px;
+button {
   border: var(--main-border);
   border-radius: var(--main-radius);
   padding: var(--main-padding);
 }
 
-#open-add-new-book-modal:hover {
+button {
   cursor: pointer;
+}
+
+#header-section {
+  margin-bottom: 16px;
+  hgroup {
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+    h1 {
+      margin-bottom: 2px;
+    }
+  }
 }
 
 #card-section {
@@ -37,7 +47,6 @@ main {
   margin: auto;
   display: flex;
   gap: 12px;
-  padding: 18px;
 }
 
 .card {
@@ -56,8 +65,8 @@ main {
   h5 {
     margin-bottom: 5px;
   }
-  border-bottom: 1px solid black;
-  padding: 8px 0;
+  border-bottom: var(--main-border);
+  padding: var(--main-padding) 0;
 }
 
 #new-book-dialog {
@@ -66,8 +75,7 @@ main {
   div {
     padding-bottom: var(--main-padding);
   }
-  #title,
-  #author {
+  input:not(#read) {
     width: 100%;
   }
 }
