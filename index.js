@@ -4,7 +4,7 @@ const newBookDialog = document.getElementById("new-book-dialog");
 const newBookForm = document.getElementById("new-book-form");
 const confirmAddBook = document.getElementById("confirm-add-book");
 
-// const myLibrary = [];
+const myLibrary = new Map();
 
 function Book(title, author, pages, read) {
   this.id = crypto.randomUUID();
@@ -16,7 +16,7 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
-  // myLibrary.push(book);
+  myLibrary.set(book.id, book);
   createCardElement(book);
 }
 
@@ -41,6 +41,17 @@ function createCardSection(headerText, text) {
   return cardSection;
 }
 
+function handleUpdateReadStatus(bookId, statusSection) {
+  const book = myLibrary.get(bookId);
+
+  myLibrary.set(book.id, {
+    ...book,
+    read: !book.read,
+  });
+
+  statusSection.textContent = !book.read ? "Read" : "Not read yet";
+}
+
 function createCardElement(book) {
   const cardElement = document.createElement("div");
   cardElement.className = "card";
@@ -54,8 +65,27 @@ function createCardElement(book) {
     "Status",
     book.read ? "Read" : "Not read yet",
   );
+  const buttonContainer = document.createElement("div");
+  const readButton = document.createElement("button");
+  const deleteButton = document.createElement("button");
 
-  cardElement.append(title, authorSection, pagesSection, statusSection);
+  readButton.textContent = "Update Read Status";
+  deleteButton.textContent = "Delete Book";
+
+  readButton.addEventListener(
+    "click",
+    handleUpdateReadStatus.bind(null, book.id, statusSection),
+  );
+  buttonContainer.className = "button-container";
+  buttonContainer.append(readButton, deleteButton);
+
+  cardElement.append(
+    title,
+    authorSection,
+    pagesSection,
+    statusSection,
+    buttonContainer,
+  );
 
   cardSection.appendChild(cardElement);
 }
