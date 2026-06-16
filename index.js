@@ -1,5 +1,5 @@
 const cardSection = document.getElementById("card-section");
-const openAddnNewBookModal = document.getElementById("open-add-new-book-modal");
+const openAddNewBookModal = document.getElementById("open-add-new-book-modal");
 const newBookDialog = document.getElementById("new-book-dialog");
 const newBookForm = document.getElementById("new-book-form");
 const confirmAddBook = document.getElementById("confirm-add-book");
@@ -12,6 +12,24 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
+}
+
+function handleUpdateReadStatus(bookId, statusSection) {
+  const book = myLibrary.get(bookId);
+
+  myLibrary.set(book.id, {
+    ...book,
+    read: !book.read,
+  });
+
+  statusSection.querySelector("p").textContent = !book.read
+    ? "Read"
+    : "Not read yet";
+}
+
+function handleDeleteBookCard(bookId, cardElement) {
+  myLibrary.delete(bookId);
+  cardElement.remove();
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -33,24 +51,6 @@ function createCardSection(headerText, text) {
   return cardSection;
 }
 
-function handleUpdateReadStatus(bookId, statusSection) {
-  const book = myLibrary.get(bookId);
-
-  myLibrary.set(book.id, {
-    ...book,
-    read: !book.read,
-  });
-
-  statusSection.querySelector("p").textContent = !book.read
-    ? "Read"
-    : "Not read yet";
-}
-
-function handleDeleteBookCard(bookId, cardElement) {
-  myLibrary.delete(bookId);
-  cardElement.remove();
-}
-
 function createCardElement(book) {
   const cardElement = document.createElement("div");
   cardElement.className = "card";
@@ -64,10 +64,12 @@ function createCardElement(book) {
     "Status",
     book.read ? "Read" : "Not read yet",
   );
+
   const buttonContainer = document.createElement("div");
   const readButton = document.createElement("button");
   const deleteButton = document.createElement("button");
 
+  buttonContainer.className = "button-container";
   readButton.textContent = "Update Read Status";
   deleteButton.textContent = "Delete Book";
 
@@ -79,7 +81,6 @@ function createCardElement(book) {
     "click",
     handleDeleteBookCard.bind(null, book.id, cardElement),
   );
-  buttonContainer.className = "button-container";
   buttonContainer.append(readButton, deleteButton);
 
   cardElement.append(
@@ -93,7 +94,7 @@ function createCardElement(book) {
   cardSection.appendChild(cardElement);
 }
 
-openAddnNewBookModal.addEventListener("click", () => {
+openAddNewBookModal.addEventListener("click", () => {
   newBookDialog.showModal();
 });
 
