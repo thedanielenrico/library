@@ -20,14 +20,6 @@ function addBookToLibrary(title, author, pages, read) {
   createCardElement(book);
 }
 
-Book.prototype.info = function () {
-  console.log(
-    `${this.title} by ${this.author}, ${this.pages} pages, ${
-      this.read ? "has been read" : "not read yet"
-    }.`,
-  );
-};
-
 function createCardSection(headerText, text) {
   const cardSection = document.createElement("div");
   cardSection.className = "card-info";
@@ -49,7 +41,9 @@ function handleUpdateReadStatus(bookId, statusSection) {
     read: !book.read,
   });
 
-  statusSection.textContent = !book.read ? "Read" : "Not read yet";
+  statusSection.querySelector("p").textContent = !book.read
+    ? "Read"
+    : "Not read yet";
 }
 
 function handleDeleteBookCard(bookId, cardElement) {
