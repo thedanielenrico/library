@@ -52,6 +52,11 @@ function handleUpdateReadStatus(bookId, statusSection) {
   statusSection.textContent = !book.read ? "Read" : "Not read yet";
 }
 
+function handleDeleteBookCard(bookId, cardElement) {
+  myLibrary.delete(bookId);
+  cardElement.remove();
+}
+
 function createCardElement(book) {
   const cardElement = document.createElement("div");
   cardElement.className = "card";
@@ -75,6 +80,10 @@ function createCardElement(book) {
   readButton.addEventListener(
     "click",
     handleUpdateReadStatus.bind(null, book.id, statusSection),
+  );
+  deleteButton.addEventListener(
+    "click",
+    handleDeleteBookCard.bind(null, book.id, cardElement),
   );
   buttonContainer.className = "button-container";
   buttonContainer.append(readButton, deleteButton);
